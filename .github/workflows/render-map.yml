@@ -18,13 +18,19 @@ jobs:
           mkdir unmined
           tar -xvf unmined.tar.gz --strip-components=1 -C ./unmined
 
-      - name: Render map
+      - name: Render overworld map
         run: |
-          ./unmined/unmined-cli web render --world .map --output .
+          ./unmined/unmined-cli web render --world .map --dimension overworld --output .
+
+      - name: Render nether map
+        run: |
+          ./unmined/unmined-cli web render --world .map --dimension nether --output ./nether
 
       - name: Commit map update
         run: |
           rm -rf unmined
+          git config --local user.email "xd1936@gmail.com"
+          git config --local user.name "Leo Herzog"
           git add .
           git commit -m "Map Update"
           git push

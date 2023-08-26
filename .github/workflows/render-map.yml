@@ -32,8 +32,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name 'Leo Herzog'
-          git config --global user.email 'xd1936@gmail.com'
+          git config --global user.name 'Github Actions'
+          git config --global user.email 'actions@github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "Update Map"
           git push

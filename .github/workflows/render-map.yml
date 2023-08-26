@@ -1,0 +1,30 @@
+name: Render Map
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .map
+
+jobs:
+  update-map:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download unmined binary
+        run: |
+          wget https://unmined.net/download/unmined-cli-linux-x64-dev/?tmstv=$(date +%s) -O unmined.tar.gz
+          tar -xvf unmined.tar.gz -C ./unmined
+
+      - name: Render map
+        run: |
+          ./unmined/unmined-cli web render --world .map --output .
+
+      - name: Commit map update
+        run: |
+          git add .
+          git commit -m "map update"
+          git push

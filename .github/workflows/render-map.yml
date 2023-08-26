@@ -24,7 +24,7 @@ jobs:
 
       - name: Render caves map
         run: |
-          ./unmined/unmined-cli web render --world .map --dimension overworld --gndxray --output ./caves
+          ./unmined/unmined-cli web render --world .map --dimension overworld --gndxray true --output ./caves
 
       - name: Render nether map
         run: |

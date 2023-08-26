@@ -28,5 +28,5 @@ jobs:
         run: |
           rm -rf unmined
           git add .
-          git commit -m "map update"
+          git commit -m "Map Update"
           git push

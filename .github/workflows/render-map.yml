@@ -17,7 +17,8 @@ jobs:
       - name: Download unmined binary
         run: |
           wget https://unmined.net/download/unmined-cli-linux-x64-dev/?tmstv=$(date +%s) -O unmined.tar.gz
-          tar -xvf unmined.tar.gz -C ./unmined
+          mkdir unmined
+          tar -xvf unmined.tar.gz --strip-components=1 -C ./unmined
 
       - name: Render map
         run: |
@@ -25,6 +26,7 @@ jobs:
 
       - name: Commit map update
         run: |
+          rm -rf unmined
           git add .
           git commit -m "map update"
           git push

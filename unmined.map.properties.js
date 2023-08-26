@@ -6,9 +6,9 @@ var UnminedMapProperties = {
     imageFormat: "jpeg",
     minRegionX: -2,
     minRegionZ: -3,
-    maxRegionX: 0,
+    maxRegionX: 2,
     maxRegionZ: 0,
-    worldName: "The Night's Watch 08/26/23 15:33:03 - Copy",
+    worldName: "The Night's Watch 08/26/23 19:03:10 - Copy",
     background: "",
     markers: new Array()
 }

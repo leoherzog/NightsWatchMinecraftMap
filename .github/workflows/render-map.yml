@@ -20,14 +20,17 @@ jobs:
 
       - name: Render overworld map
         run: |
+          rm -rf ./tiles unmined.* custom.markers.js custom.pin.png
           ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 6 --zoomout 6 --output .
 
       - name: Render caves map
         run: |
+          rm -rf ./caves
           ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 6 --zoomout 6 --gndxray true --output ./caves
 
       - name: Render nether map
         run: |
+          rm -rf ./nether
           ./unmined/unmined-cli web render --world .map --dimension nether --zoomin 6 --zoomout 6 --output ./nether
 
       - name: Commit and push changes

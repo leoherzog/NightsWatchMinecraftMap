@@ -26,13 +26,11 @@ jobs:
       - name: Render caves map
         run: |
           rm -rf caves
-          mkdir caves
           ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --gndxray true --output caves
 
       - name: Render nether map
         run: |
           rm -rf nether
-          mkdir nether
           ./unmined/unmined-cli web render --world .map --dimension nether --zoomin 3 --output nether
 
       - name: Commit and push changes

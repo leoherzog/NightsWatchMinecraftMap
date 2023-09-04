@@ -22,19 +22,19 @@ jobs:
         run: |
           rm -rf tiles unmined.* custom.markers.js custom.pin.png
           ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --output .
-          ln -sf unmined.index.html index.html
+          mv unmined.index.html index.html
 
       - name: Render caves map
         run: |
           rm -rf caves
           ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --gndxray true --output caves
-          ln -sf caves/unmined.index.html caves/index.html
+          mv caves/unmined.index.html caves/index.html
 
       - name: Render nether map
         run: |
           rm -rf nether
           ./unmined/unmined-cli web render --world .map --dimension nether --zoomin 3 --output nether
-          ln -sf nether/unmined.index.html nether/index.html
+          mv nether/unmined.index.html nether/index.html
 
       - name: Commit and push changes
         run: |

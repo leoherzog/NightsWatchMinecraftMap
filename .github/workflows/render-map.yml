@@ -26,11 +26,11 @@ jobs:
           ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --output .
           mv unmined.index.html index.html
 
-      - name: Render caves map
-        run: |
-          rm -rf caves
-          ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --gndxray true --output caves
-          mv caves/unmined.index.html caves/index.html
+      #- name: Render caves map
+      #  run: |
+      #    rm -rf caves
+      #    ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --gndxray true --output caves
+      #    mv caves/unmined.index.html caves/index.html
 
       - name: Render nether map
         run: |

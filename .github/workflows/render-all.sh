@@ -6,9 +6,9 @@ rm -rf tiles unmined.* custom.markers.js custom.pin.png
 ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --output .
 mv unmined.index.html index.html
 
-rm -rf caves
-./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --gndxray true --output caves
-mv caves/unmined.index.html caves/index.html
+#rm -rf caves
+#./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --gndxray true --output caves
+#mv caves/unmined.index.html caves/index.html
 
 rm -rf nether
 ./unmined/unmined-cli web render --world .map --dimension nether --zoomin 3 --output nether

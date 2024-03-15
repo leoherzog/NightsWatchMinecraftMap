@@ -14,4 +14,8 @@ rm -rf nether
 ./unmined/unmined-cli web render --world .map --dimension nether --zoomin 3 --output nether
 mv nether/unmined.index.html nether/index.html
 
+rm -rf end
+./unmined/unmined-cli web render --world .map --dimension end --zoomin 3 --output end
+mv end/unmined.index.html end/index.html
+
 rm -rf unmined unmined.tar.gz

@@ -1,0 +1,55 @@
+name: Render Map
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-map:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Download unmined binary
+        run: |
+          wget https://unmined.net/download/unmined-cli-linux-x64-dev/?tmstv=$(date +%s) -O unmined.tar.gz
+          mkdir unmined
+          tar -xvf unmined.tar.gz --strip-components=1 -C ./unmined
+
+      - name: Render overworld map
+        run: |
+          rm -rf tiles unmined.* custom.markers.js custom.pin.png
+          ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --output .
+          mv unmined.index.html index.html
+
+      #- name: Render caves map
+      #  run: |
+      #    rm -rf caves
+      #    ./unmined/unmined-cli web render --world .map --dimension overworld --zoomin 3 --gndxray true --output caves
+      #    mv caves/unmined.index.html caves/index.html
+
+      - name: Render nether map
+        run: |
+          rm -rf nether
+          ./unmined/unmined-cli web render --world .map --dimension nether --zoomin 3 --output nether
+          mv nether/unmined.index.html nether/index.html
+
+      - name: Render the end map
+        run: |
+          rm -rf end
+          ./unmined/unmined-cli web render --world .map --dimension end --zoomin 3 --output end
+          mv end/unmined.index.html end/index.html
+
+      - name: Commit and push changes
+        run: |
+          rm -rf unmined unmined.tar.gz
+          git config --global user.name 'Github Actions'
+          git config --global user.email 'actions@github.com'
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Update Map"
+          git push

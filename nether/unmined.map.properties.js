@@ -5,10 +5,10 @@ var UnminedMapProperties = {
     defaultZoom: 0,
     imageFormat: "jpeg",
     minRegionX: -4,
-    minRegionZ: -2,
+    minRegionZ: -4,
     maxRegionX: 2,
     maxRegionZ: 1,
-    worldName: "The Night's Watch - Copy",
+    worldName: "The Night's Watch 07/11/24 19:32:42 - Copy",
     background: "",
     markers: new Array()
 }
